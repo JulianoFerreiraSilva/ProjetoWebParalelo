@@ -1,0 +1,55 @@
+﻿@model Modelo.Cadastro.Fornecedor
+
+@{
+    ViewData["Title"] = "Remove Fornecedor";
+}
+
+<h3>Você realmente deseja remover o fornecedor @Html.DisplayFor(model => model.RazaoSocial)</h3>
+<div>
+    <h4>Fornecedor</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RazaoSocial)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RazaoSocial)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cnpj)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cnpj)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Bairro)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="FornecedorId" />
+        <tr>
+            <td>
+                <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+            </td>
+            <td>
+                <a asp-action="Index" class="btn btn-outline-info">Voltar</a>
+            </td>
+        </tr>
+    </form>
+</div>

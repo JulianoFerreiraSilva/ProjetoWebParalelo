@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Modelo.Cadastro.Fabricante>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Fabricantes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success">Novo Fabricante</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FabricanteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nacionalidade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FabricanteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nacionalidade)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FabricanteId" class="btn btn-outline-primary btn-sm">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.FabricanteId" class="btn btn-outline-secondary btn-sm">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.FabricanteId" class="btn btn-outline-warning btn-sm">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
