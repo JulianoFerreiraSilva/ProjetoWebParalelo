@@ -19,8 +19,7 @@ namespace Modelo.Cadastro
         public int FabricanteId { get; set; }
         public virtual Fabricante Fabricante { get; set; }
 
-        public virtual EntradaMercadoria EntradaMercadoria { get; set; }
-
+        public virtual ICollection<Estoque> EstoqueProduto { get; set; }
         public virtual ICollection<ProdutoFornecedor> ProdutosFornecedores { get; set; }
     }
 }

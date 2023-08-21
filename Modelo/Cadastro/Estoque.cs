@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Modelo.Cadastro
 {
@@ -15,10 +12,7 @@ namespace Modelo.Cadastro
         [Column(TypeName = "money")]
         public decimal ValorUnitario { get; set; }
 
-        public virtual ICollection<Produto> Produtos { get; set; }
-        [ForeignKey("IdEntrada")]
-        public int EntradaId { get; set; }
-        public virtual EntradaMercadoria EntradaMercadoria { get; set; }
-
+        public int ProdutoId { get; set; }
+        public virtual Produto Produto { get; set; }
     }
 }
