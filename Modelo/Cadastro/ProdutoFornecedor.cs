@@ -1,9 +1,5 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Modelo.Cadastro
 {
@@ -18,6 +14,5 @@ namespace Modelo.Cadastro
 
         public Produto Produto { get; set; }
         public Fornecedor Fornecedor { get; set; }
-        public EntradaMercadoria EntradaMercadoria { get; set; }
     }
 }

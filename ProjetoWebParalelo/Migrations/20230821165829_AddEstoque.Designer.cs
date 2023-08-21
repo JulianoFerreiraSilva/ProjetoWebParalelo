@@ -10,7 +10,7 @@ using ProjetoWebParalelo.Data;
 namespace ProjetoWebParalelo.Migrations
 {
     [DbContext(typeof(AcessoContext))]
-    [Migration("20230815134112_AddEstoque")]
+    [Migration("20230821165829_AddEstoque")]
     partial class AddEstoque
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,45 +21,6 @@ namespace ProjetoWebParalelo.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Modelo.Cadastro.EntradaMercadoria", b =>
-                {
-                    b.Property<int>("EntradaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DataEntrada")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("EstoqueId")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("NotaFornecedor")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Produto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Quantidade")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("ValorTotalNota")
-                        .HasColumnType("money");
-
-                    b.Property<decimal>("ValorTotalProduto")
-                        .HasColumnType("money");
-
-                    b.Property<decimal>("ValorUnitarioProduto")
-                        .HasColumnType("money");
-
-                    b.HasKey("EntradaId");
-
-                    b.HasIndex("EstoqueId")
-                        .IsUnique();
-
-                    b.ToTable("EntradaMercadorias");
-                });
-
             modelBuilder.Entity("Modelo.Cadastro.Estoque", b =>
                 {
                     b.Property<int>("EstoqueId")
@@ -67,7 +28,7 @@ namespace ProjetoWebParalelo.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EntradaId")
+                    b.Property<int>("ProdutoId")
                         .HasColumnType("int");
 
                     b.Property<int?>("Quantidade")
@@ -77,6 +38,8 @@ namespace ProjetoWebParalelo.Migrations
                         .HasColumnType("money");
 
                     b.HasKey("EstoqueId");
+
+                    b.HasIndex("ProdutoId");
 
                     b.ToTable("Estoque");
                 });
@@ -136,12 +99,6 @@ namespace ProjetoWebParalelo.Migrations
                     b.Property<string>("CodBarra")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EntradaMercadoriaEntradaId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("EstoqueId")
-                        .HasColumnType("int");
-
                     b.Property<int>("FabricanteId")
                         .HasColumnType("int");
 
@@ -152,10 +109,6 @@ namespace ProjetoWebParalelo.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProdutoId");
-
-                    b.HasIndex("EntradaMercadoriaEntradaId");
-
-                    b.HasIndex("EstoqueId");
 
                     b.HasIndex("FabricanteId");
 
@@ -172,9 +125,6 @@ namespace ProjetoWebParalelo.Migrations
                     b.Property<int>("CodProdutoFornecedor")
                         .HasColumnType("int");
 
-                    b.Property<int?>("EntradaMercadoriaEntradaId")
-                        .HasColumnType("int");
-
                     b.Property<int>("FornecedorId")
                         .HasColumnType("int");
 
@@ -183,8 +133,6 @@ namespace ProjetoWebParalelo.Migrations
 
                     b.HasKey("ProdFornecedorId");
 
-                    b.HasIndex("EntradaMercadoriaEntradaId");
-
                     b.HasIndex("FornecedorId");
 
                     b.HasIndex("ProdutoId");
@@ -192,25 +140,17 @@ namespace ProjetoWebParalelo.Migrations
                     b.ToTable("ProdutosFornecedores");
                 });
 
-            modelBuilder.Entity("Modelo.Cadastro.EntradaMercadoria", b =>
+            modelBuilder.Entity("Modelo.Cadastro.Estoque", b =>
                 {
-                    b.HasOne("Modelo.Cadastro.Estoque", "Estoque")
-                        .WithOne("EntradaMercadoria")
-                        .HasForeignKey("Modelo.Cadastro.EntradaMercadoria", "EstoqueId")
+                    b.HasOne("Modelo.Cadastro.Produto", "Produto")
+                        .WithMany("ProdutoEstoque")
+                        .HasForeignKey("ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("Modelo.Cadastro.Produto", b =>
                 {
-                    b.HasOne("Modelo.Cadastro.EntradaMercadoria", "EntradaMercadoria")
-                        .WithMany()
-                        .HasForeignKey("EntradaMercadoriaEntradaId");
-
-                    b.HasOne("Modelo.Cadastro.Estoque", null)
-                        .WithMany("Produtos")
-                        .HasForeignKey("EstoqueId");
-
                     b.HasOne("Modelo.Cadastro.Fabricante", "Fabricante")
                         .WithMany("Produtos")
                         .HasForeignKey("FabricanteId")
@@ -220,10 +160,6 @@ namespace ProjetoWebParalelo.Migrations
 
             modelBuilder.Entity("Modelo.Cadastro.ProdutoFornecedor", b =>
                 {
-                    b.HasOne("Modelo.Cadastro.EntradaMercadoria", "EntradaMercadoria")
-                        .WithMany("ProdutoFornecedor")
-                        .HasForeignKey("EntradaMercadoriaEntradaId");
-
                     b.HasOne("Modelo.Cadastro.Fornecedor", "Fornecedor")
                         .WithMany("ProdutosFornecedores")
                         .HasForeignKey("FornecedorId")

@@ -2,7 +2,7 @@
 
 namespace ProjetoWebParalelo.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Inicio : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,6 +45,7 @@ namespace ProjetoWebParalelo.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(nullable: true),
                     CodBarra = table.Column<string>(nullable: true),
+                    Perfil = table.Column<string>(nullable: true),
                     FabricanteId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -65,7 +66,8 @@ namespace ProjetoWebParalelo.Migrations
                     ProdFornecedorId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProdutoId = table.Column<int>(nullable: false),
-                    FornecedorId = table.Column<int>(nullable: false)
+                    FornecedorId = table.Column<int>(nullable: false),
+                    CodProdutoFornecedor = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
