@@ -29,9 +29,9 @@ namespace ProjetoWebParalelo.Data.DAL
 
         public async Task<Estoque> SelecionaEstoque(int id)
         {
-            var estoque = await _cont.Estoque.SingleOrDefaultAsync(e => e.EstoqueId == id);
-            _cont.Estoque.Where(e => estoque.ProdutoId == e.Produto.ProdutoId).
-                Include(e => estoque.Produto.FabricanteId == e.Produto.FabricanteId).LoadAsync();
+            var estoque =  await _cont.Estoque.SingleOrDefaultAsync(e => e.EstoqueId == id);
+            _cont.Produtos.Where(p => estoque.ProdutoId == p.ProdutoId).Load();
+            _cont.Fabricantes.Where(f => estoque.Produto.FabricanteId == f.FabricanteId).Load();
             return estoque;
         }
     }

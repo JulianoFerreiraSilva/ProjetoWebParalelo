@@ -82,7 +82,7 @@ namespace ProjetoWebParalelo.Controllers
             return visaoProduto;
         }
 
-        // POST: ProdutoController/Edit/5
+         // POST: ProdutoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Produto produto)

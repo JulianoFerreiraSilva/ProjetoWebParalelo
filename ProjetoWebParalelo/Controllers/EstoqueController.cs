@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Modelo.Cadastro;
 using ProjetoWebParalelo.Data;
 using ProjetoWebParalelo.Data.DAL;
 using System.Threading.Tasks;
@@ -10,10 +12,17 @@ namespace ProjetoWebParalelo.Controllers
     public class EstoqueController : Controller
     {
         private EstoqueDAL est;
-        private AcessoContext _cont;
+        private ProdutoDAL _prod;
+
         public EstoqueController(AcessoContext cont)
         {
             est = new EstoqueDAL(cont);
+            _prod = new ProdutoDAL(cont);
+        }
+
+        public async Task<IActionResult> SelecionaPorId(int id)
+        {
+            return View(await est.SelecionaEstoque(id));
         }
         // GET: EstoqueController
         public async Task<IActionResult> Index()
@@ -25,11 +34,11 @@ namespace ProjetoWebParalelo.Controllers
         // GET: EstoqueController/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            if(id == null)
+            var estoque = await est.SelecionaEstoque(id);
+            if (estoque == null)
             {
                 return NotFound();
             }
-            var estoque = await est.SelecionaEstoque(id);
             return View(estoque);
         }
 
@@ -55,9 +64,13 @@ namespace ProjetoWebParalelo.Controllers
         }
 
         // GET: EstoqueController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            ViewResult visaoEstoque = (ViewResult)await SelecionaPorId(id);
+            Estoque estoqueProdutoFabricante = (Estoque)visaoEstoque.Model;
+            ViewBag.Produtos = new SelectList(_prod.ListaProdutos(), "ProdutoId", "Nome",
+                estoqueProdutoFabricante.ProdutoId);
+                return visaoEstoque;
         }
 
         // POST: EstoqueController/Edit/5
