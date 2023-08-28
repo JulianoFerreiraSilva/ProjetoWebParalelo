@@ -21,5 +21,6 @@ namespace Modelo.Cadastro
 
         public virtual ICollection<Estoque> EstoqueProduto { get; set; }
         public virtual ICollection<ProdutoFornecedor> ProdutosFornecedores { get; set; }
+        public virtual ICollection<EntradaMercadoria> EntradaMercadoria { get; set; }
     }
 }

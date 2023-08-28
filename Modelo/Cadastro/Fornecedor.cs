@@ -16,5 +16,6 @@ namespace Modelo.Cadastro
         public string Cidade { get; set; }
 
         public virtual ICollection<ProdutoFornecedor> ProdutosFornecedores { get; set; }
+        public virtual ICollection<EntradaMercadoria> EntradaMercadoria { get; set; }
     }
 }

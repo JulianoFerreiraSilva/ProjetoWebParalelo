@@ -9,6 +9,14 @@
     <Compile Remove="Migrations\20230818181259_Initial.Designer.cs" />
     <Compile Remove="Migrations\20230818195446_Initial.cs" />
     <Compile Remove="Migrations\20230818195446_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20230828133028_EntradaMercadoria.cs" />
+    <Compile Remove="Migrations\20230828133028_EntradaMercadoria.Designer.cs" />
+    <Compile Remove="Migrations\20230828133724_EntradaMercadoria.cs" />
+    <Compile Remove="Migrations\20230828133724_EntradaMercadoria.Designer.cs" />
+    <Compile Remove="Migrations\20230828134519_EntradaMercadoria.cs" />
+    <Compile Remove="Migrations\20230828134519_EntradaMercadoria.Designer.cs" />
+    <Compile Remove="Migrations\20230828135823_EntradaMercadoria.cs" />
+    <Compile Remove="Migrations\20230828135823_EntradaMercadoria.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

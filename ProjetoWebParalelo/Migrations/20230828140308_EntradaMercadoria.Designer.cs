@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoWebParalelo.Data;
 
 namespace ProjetoWebParalelo.Migrations
 {
     [DbContext(typeof(AcessoContext))]
-    partial class AcessoContextModelSnapshot : ModelSnapshot
+    [Migration("20230828140308_EntradaMercadoria")]
+    partial class EntradaMercadoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -13,5 +13,6 @@ namespace ProjetoWebParalelo.Data
         public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<Fabricante> Fabricantes { get; set; }
         public DbSet<Estoque> Estoque { get; set; }
+        public DbSet<EntradaMercadoria> Entrada { get; set; }
     }
 }
