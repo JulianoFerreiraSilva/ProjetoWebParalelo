@@ -11,30 +11,32 @@ namespace ProjetoWebParalelo.Controllers
 {
     public class EstoqueController : Controller
     {
-        private EstoqueDAL est;
+        private EstoqueDAL _est;
         private ProdutoDAL _prod;
+        private EntradaMercadoriaDAL _ent;
 
         public EstoqueController(AcessoContext cont)
         {
-            est = new EstoqueDAL(cont);
+            _est = new EstoqueDAL(cont);
             _prod = new ProdutoDAL(cont);
+            _ent = new EntradaMercadoriaDAL(cont);
         }
 
         public async Task<IActionResult> SelecionaPorId(int id)
         {
-            return View(await est.SelecionaEstoque(id));
+            return View(await _est.SelecionaEstoque(id));
         }
         // GET: EstoqueController
         public async Task<IActionResult> Index()
         {
-            var lista = await est.ListaEstoque().ToListAsync();
+            var lista = await _est.ListaEstoque().ToListAsync();
             return View(lista);
         }
 
         // GET: EstoqueController/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            var estoque = await est.SelecionaEstoque(id);
+            var estoque = await _est.SelecionaEstoque(id);
             if (estoque == null)
             {
                 return NotFound();
@@ -43,8 +45,9 @@ namespace ProjetoWebParalelo.Controllers
         }
 
         // GET: EstoqueController/Create
-        public ActionResult Create()
+        public ActionResult EntradaMercadoria(int id)
         {
+            await _ent.SelecionaItem(id);
             return View();
         }
 
