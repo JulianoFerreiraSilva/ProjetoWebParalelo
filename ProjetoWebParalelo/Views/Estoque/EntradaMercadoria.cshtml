@@ -1,0 +1,71 @@
+﻿@model Modelo.Cadastro.EntradaMercadoria
+
+@{
+    ViewData["Title"] = "Entrada Mercadoria";
+}
+
+<h4>EntradaMercadoria</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EntradaMercadoria">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Data Entrada</label>
+                <input asp-for="DataEntrada" class="form-control" />
+                <span asp-validation-for="DataEntrada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Fornecedor</label>
+                <select asp-for="FornecedorId" class="form-control"
+                        asp-items=@(new SelectList(ViewBag.Fornecedores, "FornecedorId", "RazaoSocial"))>
+                        Selecione o Fornecedor
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label">Produto</label>
+                <select asp-for="ProdutoId" class="form-control"
+                        asp-items=@(new SelectList(@ViewBag.Produtos, "ProdutoId", "Nome"))>Selecione o Produto</select>
+            </div>
+            <div>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuantidadeEntrada" class="control-label"></label>
+                <input asp-for="QuantidadeEntrada" class="form-control" />
+                <span asp-validation-for="QuantidadeEntrada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorUnitario" class="control-label"></label>
+                <input asp-for="ValorUnitario" class="form-control" />
+                <span asp-validation-for="ValorUnitario" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ValorTotal" class="control-label"></label>
+                <input asp-for="ValorTotal" class="form-control" />
+                <span asp-validation-for="ValorTotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <tr>
+                    <td>
+                        <input type="submit" value="Enviar" class="btn btn-outline-primary" />
+                    </td>
+                    <td>
+                        <a asp-action="Index" class="btn btn-outline-danger">Voltar</a>
+                    </td>
+                </tr>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Modelo.Cadastro.EntradaMercadoria>
+
+@{
+    ViewData["Title"] = "Entrada Mercadoria";
+}
+
+<h1>Lista de Entradas</h1>
+
+<p>
+    <a asp-action="EntradaMercadoria" class="btn btn-outline-success">Entrada Mercadoria</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label>Data Entrada</label>
+            </th>
+            <th>
+                <label>Produto</label>
+            </th>
+            <th>
+                <label>Quantidade</label>
+            </th>
+            <th>
+                <label>Valor Total</label>
+            </th>
+            <th>
+                <label>Fornecedor</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataEntrada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produto.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantidadeEntrada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fornecedor.RazaoSocial)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EntradaId" class="btn btn-outline-primary btn-sm">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.EntradaId" class="btn btn-outline-secondary btn-sm">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.EntradaId" class="btn btn-outline-warning btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
