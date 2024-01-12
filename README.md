@@ -9,7 +9,7 @@ O projeto esta sendo desenvolvido com o intuito de praticar conhecimentos adquir
 
 ## Tecnologias usadas: 
 
-Aqui eu usei a linguagem orietada a objeto C#, a ferramenta ORM da Microsoft Entity Framework Core e o Framework ASP .NET Core MVC 
+Aqui eu usei a linguagem orietada a objeto C#, a ferramenta ORM da Microsoft Entity Framework Core e o Framework ASP .NET Core MVC e Razor page Aplication
 ### Contexto:
 
 Nesse sistema o usuário cadastra o produto, atualiza, lista, verifica os detalhes, deleta(CRUD)...
