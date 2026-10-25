@@ -190,9 +190,9 @@ A configuração de conexão utiliza a chave:
 
 ```json
 {
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=ProjeroParaleloDB;Trusted_Connection=True;MultipleActiveResultSets=true"
-  }
+   "ConnectionStrings": {
+        "DefaultConnection": "Utilize aqui a string de conexão com o banco de dados"
+    }
 }
 ```
 
